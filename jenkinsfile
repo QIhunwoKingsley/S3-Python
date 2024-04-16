@@ -16,9 +16,11 @@ pipeline {
     stages {
         stage('Git Checkout'){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/QIhunwoKingsley/S3-Python.git']])
+                git branch: 'main', credentialsId: 'my_git_credentials', url: 'https://github.com/QIhunwoKingsley/S3-Python.git'
             }
         }
+
+        
         stage('Initalizing Terraform code'){
             steps{
                     sh '''
